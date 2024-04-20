@@ -1,0 +1,121 @@
+﻿@model IEnumerable<Project.Net.Models.Product>
+@{
+    ViewData["Title"] = "Home Page";
+}
+   
+
+   
+    <img src="c:\Project.Net\wwwroot\images.png" alt="img">
+<div class="container">
+<div class="text-center">
+    <h1 class="display-4" >ONLINE MOBILE STORE</h1>
+   <style>
+        body {
+           background-color: #006400; /* Dark green color */
+           color: #FFFFFF; /* White text color for contrast */
+        }
+    </style><br>
+    <body>
+@*btn*@
+<div class="button-container">
+    <a href="@Url.Action("Product", "Product")" class="btn btn-primary">View Products</a>
+    <a href="@Url.Action("MyType", "Type")" class="btn btn-primary">View Types</a>
+    <a href="@Url.Action("Brand", "Brand")" class="btn btn-primary">View Brands</a>
+    <a href="@Url.Action("MenuItem", "Menu")" class="btn btn-primary">View Menus</a>
+
+</div>
+
+<style>
+    .button-container {
+        display: inline;
+    }
+
+    .button-container .btn {
+        margin-right: 10px; /* Adjust as needed */
+    }
+</style></body>
+<br>
+<br>
+
+
+<head>
+    <style>
+        /* Style for the search bar */
+        .search-container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 300px; /* Set the width of the search bar */
+            height: 40px; /* Set the height of the search bar */
+            padding: 10px; /* Add padding to the search bar */
+            border: 2px solid black; /* Set the border color */
+            border-radius: 5px; /* Add rounded corners to the search bar */
+            font-size: 16px; /* Set the font size */
+        }
+
+        .search-button {
+            height: 40px; /* Set the height of the button */
+            padding: 10px; /* Add padding to the button */
+            font-size: 16px; /* Set the font size */
+            background-color: #4CAF50; /* Set the background color of the button */
+            color: white; /* Set the text color of the button */
+            border: none; /* Remove the button border */
+            border-radius: 5px; /* Add rounded corners to the button */
+            cursor: pointer; /* Set cursor style to pointer */
+        }
+
+        .search-button:hover {
+            background-color: #45a049; /* Change background color on hover */
+        }
+    </style>
+</head>
+@*search bar*@
+     <div class="search-container">
+        <input class="search-input" type="text" name="query" placeholder="Enter your search query" required pattern="[A-Za-z0-9\s]+">
+        <button class="search-button" type="submit" onclick="return validateSearchForm()">Search</button>
+        <div id="searchError" style="color: red;"></div>
+    
+
+    <script>
+        function validateSearchForm() {
+            var query = document.getElementsByName("query")[0].value;
+            if (!query.match(/[A-Za-z0-9\s]+/)) {
+                document.getElementById("searchError").innerText = "Please enter a valid search query (only letters, numbers, and spaces).";
+                return false;
+            }
+            document.getElementById("searchError").innerText = ""; // Clear error message
+            return true;
+        }
+    </script></div>
+      
+      <!-- Product Display -->
+        <div class="row">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var product in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name">
+                        <div class="card-body">
+                            <h5 class="card-title">@product.Name</h5>
+                            <p class="card-text">@product.Description</p>
+                            <p class="card-text">Price: $@product.Price</p>
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No products available.</p>
+        }
+    </div>
+
+</div>
+</div>
+
+

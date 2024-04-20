@@ -1,0 +1,41 @@
+
+@model IEnumerable<Project.Net.Models.Brand>
+
+<h1 style="color: blue;">Brands</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var brand in Model)
+        {
+            <tr>
+                <td>@brand.Id</td>
+                <td>@brand.Name</td>
+                <td>@brand.Category</td>
+                <td>
+                    <a asp-action="Create" asp-route-id="@brand.Id">Create</a> |
+                    <a asp-action="Edit" asp-route-id="@brand.Id">Edit</a> |
+                    <form asp-action="Delete" asp-route-id="@brand.Id" method="post" style="display: inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<body>
+    <style>
+        body {
+           background-color: #006400; /* Dark green color */
+           color: #FFFFFF; /* White text color for contrast */
+        }
+    </style>
+</body>

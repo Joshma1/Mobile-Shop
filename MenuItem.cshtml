@@ -1,0 +1,46 @@
+
+@model IEnumerable<Project.Net.Models.MenuItem>
+
+<h1>Menu Items</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>URL</th>
+            <th>Parent ID</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var menu in Model)
+        {
+            <tr>
+                <td>@menu.Id</td>
+                <td>@menu.Name</td>
+                <td>@menu.Category</td>
+                <td>@menu.Url</td>
+                <td>@menu.ParentId</td>
+                <td>
+                    <a href="@Url.Action("Create", "Menu", new { id = menu.Id })">Create</a> |
+                    <a href="@Url.Action("Edit", "Menu", new { id = menu.Id })">Edit</a> |
+                    <form method="post" action="@Url.Action("Delete", "Menu", new { id = menu.Id })">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<body>
+    <style>
+        body {
+           background-color: #006400; /* Dark green color */
+           color: #FFFFFF; /* White text color for contrast */
+        }
+    </style>
+</body>

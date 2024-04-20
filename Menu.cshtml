@@ -1,0 +1,16 @@
+
+@model List<Project.Net.Models.Menu>
+
+<h1>Menus</h1>
+
+@foreach (var menu in Model)
+{
+    <h2>Menu ID: @menu.Id</h2>
+    <ul>
+        @foreach (var menuItem in menu.Items)
+        {
+            <li>@menuItem.Name - @menuItem.Url</li>
+        }
+    </ul>
+}
+

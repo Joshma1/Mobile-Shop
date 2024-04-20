@@ -1,0 +1,31 @@
+@* @page
+@model Project.Net.Views.Type.Create
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    
+</div> *@
+
+@model Project.Net.Models.MyType
+
+<h1>Create Types</h1>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div><br>
+    <div>
+        <label asp-for="Category">Category:</label>
+        <input asp-for="Category" />
+        <span asp-validation-for="Category"></span>
+    </div><br>
+
+    
+    <button type="submit">Create</button>
+</form>

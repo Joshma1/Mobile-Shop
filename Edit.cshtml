@@ -1,0 +1,44 @@
+@* @page
+@model Project.Net.Views.Type.Edit
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    
+</div> *@
+
+
+@model Project.Net.Models.MyType
+
+<h1 style="color: blue;">Edit Types</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div><br>
+
+    <div>
+        <label asp-for="Category">Category:</label>
+        <input asp-for="Category" />
+        <span asp-validation-for="Category"></span>
+    </div><br>
+
+    <button type="submit">Save Changes</button>
+</form>
+
+
+<body>
+    <style>
+        body {
+           background-color: #006400; /* Dark green color */
+           color: #FFFFFF; /* White text color for contrast */
+        }
+    </style>
+</body>

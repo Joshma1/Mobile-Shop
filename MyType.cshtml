@@ -1,0 +1,54 @@
+@* @page
+@model Project.Net.Views.Type.MyType
+@{
+    ViewData["Title"] = "MyType";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    
+</div> *@
+
+
+@model IEnumerable<Project.Net.Models.MyType>
+
+<h1 style="color: blue;">Types</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Types</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var MyType in Model)
+        {
+            <tr>
+                <td>@MyType.Id</td>
+                <td>@MyType.Name</td>
+                <td>@MyType.Category</td>
+                <td>
+                    <a asp-action="Create" asp-route-id="@MyType.Id">Create</a> |
+                    <a asp-action="Edit" asp-route-id="@MyType.Id">Edit</a> |
+                    <form asp-action="Delete" asp-route-id="@MyType.Id" method="post" style="display: inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<body>
+    <style>
+        body {
+           background-color: #006400; /* Dark green color */
+           color: #FFFFFF; /* White text color for contrast */
+        }
+    </style>
+</body>

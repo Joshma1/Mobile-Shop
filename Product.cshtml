@@ -1,0 +1,46 @@
+
+@model IEnumerable<Project.Net.Models.Product>
+
+<h1 style="color: blue;">Products</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Category</td>
+                <td>@product.Price</td>
+                <td>@product.Description</td>
+                <td>
+                    <a asp-action="Create" asp-route-id="@product.Id">Create</a> |
+                    <a asp-action="Edit" asp-route-id="@product.Id">Edit</a> |
+                    <form asp-action="Delete" asp-route-id="@product.Id" method="post" style="display: inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<body>
+    <style>
+        body {
+           background-color: #006400; /* Dark green color */
+           color: #FFFFFF; /* White text color for contrast */
+        }
+    </style>
+</body>
+
